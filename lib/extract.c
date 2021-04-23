@@ -18,7 +18,9 @@
 #include <sys/types.h>
 #include <fcntl.h>
 #include <errno.h>
+#ifndef __NuttX__
 #include <utime.h>
+#endif
 
 #ifdef STDC_HEADERS
 # include <stdlib.h>
@@ -32,6 +34,7 @@
 static int
 tar_set_file_perms(TAR *t, char *realname)
 {
+#ifndef __NuttX__
 	mode_t mode;
 	uid_t uid;
 	gid_t gid;
@@ -81,7 +84,7 @@ tar_set_file_perms(TAR *t, char *realname)
 #endif
 		return -1;
 	}
-
+#endif
 	return 0;
 }
 
@@ -365,6 +368,7 @@ tar_extract_symlink(TAR *t, char *realname)
 int
 tar_extract_chardev(TAR *t, char *realname)
 {
+#ifndef __NuttX__
 	mode_t mode;
 	unsigned long devmaj, devmin;
 	char *filename;
@@ -395,7 +399,7 @@ tar_extract_chardev(TAR *t, char *realname)
 #endif
 		return -1;
 	}
-
+#endif
 	return 0;
 }
 
@@ -404,6 +408,7 @@ tar_extract_chardev(TAR *t, char *realname)
 int
 tar_extract_blockdev(TAR *t, char *realname)
 {
+#ifndef __NuttX__
 	mode_t mode;
 	unsigned long devmaj, devmin;
 	char *filename;
@@ -434,6 +439,7 @@ tar_extract_blockdev(TAR *t, char *realname)
 #endif
 		return -1;
 	}
+#endif
 
 	return 0;
 }
@@ -464,6 +470,7 @@ tar_extract_dir(TAR *t, char *realname)
 #endif
 	if (mkdir(filename, mode) == -1)
 	{
+#ifndef __NuttX__
 		if (errno == EEXIST)
 		{
 			if (chmod(filename, mode) == -1)
@@ -488,6 +495,7 @@ tar_extract_dir(TAR *t, char *realname)
 #endif
 			return -1;
 		}
+#endif
 	}
 
 	return 0;
