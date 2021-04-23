@@ -270,7 +270,7 @@ extract(char *tarfile, char *rootdir)
 }
 
 
-void
+static void
 usage(void *rootdir)
 {
 	printf("Usage: %s [-C rootdir] [-g] [-z] -x|-t filename.tar\n",
