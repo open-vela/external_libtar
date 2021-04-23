@@ -173,11 +173,16 @@ int inet_aton(const char *, struct in_addr *);
 
 # ifdef MAJOR_IN_MKDEV
 #  include <sys/mkdev.h>
-# else
-#  ifdef MAJOR_IN_SYSMACROS
+# elif defined(MAJOR_IN_SYSMACROS)
 #   include <sys/sysmacros.h>
-#  endif
-# endif
+# else
+# define MINORBITS		20
+# define MINORMASK		((1U << MINORBITS) - 1)
+
+# define major(dev)		((unsigned int)((dev) >> MINORBITS))
+# define minor(dev)		((unsigned int)((dev) & MINORMASK))
+# define mkdev(maj, min)	(((maj) << MINORBITS) | (min))
+#endif
 
 /*
 ** On most systems makedev() has two args.
