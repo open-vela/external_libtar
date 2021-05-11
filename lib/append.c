@@ -114,6 +114,7 @@ tar_append_file(TAR *t, const char *realname, const char *savename)
 		if (libtar_hash_add(t->h, td) == -1)
 			return -1;
 	}
+#ifndef __NuttX__
 	libtar_hashptr_reset(&hp);
 	if (libtar_hash_getkey(td->td_h, &hp, &(s.st_ino),
 			       (libtar_matchfunc_t)ino_match) != 0)
@@ -127,6 +128,7 @@ tar_append_file(TAR *t, const char *realname, const char *savename)
 		th_set_link(t, ti->ti_name);
 	}
 	else
+#endif
 	{
 #ifdef DEBUG
 		printf("+++ adding entry: device (0x%lx,0x%lx), inode %ld "
