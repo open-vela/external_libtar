@@ -247,6 +247,9 @@ extract(char *tarfile, char *rootdir)
 		return -1;
 	}
 
+	if (rootdir && mkdirhier(rootdir) == -1)
+		return -1;
+
 #ifdef DEBUG
 	puts("extracting tarfile...");
 #endif
