@@ -20,6 +20,10 @@ CFLAGS +=  ${shell  $(INCDIR) $(INCDIROPT) "$(CC)" $(APPDIR)/external/libtar}
 CFLAGS +=  ${shell  $(INCDIR) $(INCDIROPT) "$(CC)" $(APPDIR)/external/libtar/compat}
 CFLAGS +=  ${shell  $(INCDIR) $(INCDIROPT) "$(CC)" $(APPDIR)/external/libtar/listhash}
 CFLAGS +=  ${shell  $(INCDIR) $(INCDIROPT) "$(CC)" $(APPDIR)/external/libtar/lib}
+
+ifneq ($(CONFIG_LIB_ZLIB),)
+CFLAGS += -DHAVE_LIBZ
+endif
 CFLAGS += -DMAXPATHLEN=PATH_MAX
 
 CSRCS = $(wildcard lib/*.c)
@@ -28,7 +32,7 @@ CSRCS += compat/fnmatch.c
 CSRCS += compat/strlcat.c
 CSRCS += compat/strmode.c
 
-ifneq ($(CONFIG_UTILS_TAR), )
+ifneq ($(CONFIG_UTILS_TAR),)
 PROGNAME = $(CONFIG_UTILS_TAR_PROGNAME)
 PRIORITY = $(CONFIG_UTILS_TAR_PRIORITY)
 STACKSIZE = $(CONFIG_UTILS_TAR_STACKSIZE)
