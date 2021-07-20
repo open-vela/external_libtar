@@ -181,7 +181,7 @@ int inet_aton(const char *, struct in_addr *);
 
 # define major(dev)		((unsigned int)((dev) >> MINORBITS))
 # define minor(dev)		((unsigned int)((dev) & MINORMASK))
-# define mkdev(maj, min)	(((maj) << MINORBITS) | (min))
+# define makedev(maj, min)	(((maj) << MINORBITS) | (min))
 #endif
 
 /*
