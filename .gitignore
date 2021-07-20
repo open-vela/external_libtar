@@ -1,6 +1,9 @@
 *.o
 *.lo
 .libs/
+.built
+.depend
+Make.dep
 Makefile
 /INSTALL
 /Makefile.in
