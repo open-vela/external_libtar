@@ -23,6 +23,7 @@ CFLAGS +=  ${shell  $(INCDIR) $(INCDIROPT) "$(CC)" $(APPDIR)/external/libtar/lib
 
 ifneq ($(CONFIG_LIB_ZLIB),)
 CFLAGS += -DHAVE_LIBZ
+CFLAGS +=  ${shell  $(INCDIR) $(INCDIROPT) "$(CC)" $(APPDIR)/external/zlib}
 endif
 CFLAGS += -DMAXPATHLEN=PATH_MAX
 
