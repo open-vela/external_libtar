@@ -29,8 +29,6 @@ CFLAGS += -DMAXPATHLEN=PATH_MAX
 
 CSRCS = $(wildcard lib/*.c)
 CSRCS += $(wildcard listhash/*.c)
-CSRCS += compat/fnmatch.c
-CSRCS += compat/strlcat.c
 CSRCS += compat/strmode.c
 
 ifneq ($(CONFIG_UTILS_TAR),)
