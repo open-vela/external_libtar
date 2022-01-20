@@ -17,10 +17,10 @@
 #define HAVE_DLFCN_H 1
 
 /* Define to 1 if your system has a working POSIX `fnmatch' function. */
-/* #undef HAVE_FNMATCH */
+#define HAVE_FNMATCH 1
 
 /* Define to 1 if you have the <fnmatch.h> header file. */
-/* #undef HAVE_FNMATCH_H */
+#define HAVE_FNMATCH_H 1
 
 /* Define to 1 if you have the <inttypes.h> header file. */
 #define HAVE_INTTYPES_H 1
