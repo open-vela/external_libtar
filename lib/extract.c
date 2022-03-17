@@ -155,10 +155,12 @@ tar_extract_file(TAR *t, char *realname)
 int
 tar_extract_regfile(TAR *t, char *realname)
 {
-	mode_t mode;
 	size_t size;
+#ifdef DEBUG
+	mode_t mode;
 	uid_t uid;
 	gid_t gid;
+#endif
 	int fdout;
 	int i, k;
 	char buf[T_BLOCKSIZE];
@@ -176,12 +178,12 @@ tar_extract_regfile(TAR *t, char *realname)
 	}
 
 	filename = (realname ? realname : th_get_pathname(t));
-	mode = th_get_mode(t);
 	size = th_get_size(t);
+#ifdef DEBUG
+	mode = th_get_mode(t);
 	uid = th_get_uid(t);
 	gid = th_get_gid(t);
 
-#ifdef DEBUG
 	printf("  ==> extracting: %s (mode %04o, uid %d, gid %d, %d bytes)\n",
 	       filename, mode, uid, gid, size);
 #endif
