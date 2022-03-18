@@ -108,11 +108,11 @@ extern const char libtar_version[];
 
 
 /* open a new tarfile handle */
-int tar_open(TAR **t, const char *pathname, tartype_t *type,
+int tar_open(TAR **t, char *pathname, tartype_t *type,
 	     int oflags, int mode, int options);
 
 /* make a tarfile handle out of a previously-opened descriptor */
-int tar_fdopen(TAR **t, int fd, const char *pathname, tartype_t *type,
+int tar_fdopen(TAR **t, int fd, char *pathname, tartype_t *type,
 	       int oflags, int mode, int options);
 
 /* returns the descriptor associated with t */
