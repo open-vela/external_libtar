@@ -34,13 +34,13 @@ th_finish(TAR *t)
 		 * systems:
 		 *      strncpy(t->th_buf.magic, "ustar  ", 8);
 		 */
-		strncpy(t->th_buf.magic, "ustar ", 6);
-		strncpy(t->th_buf.version, " ", 2);
+		memcpy(t->th_buf.magic, "ustar ", 6);
+		memcpy(t->th_buf.version, " ", 2);
 	}
 	else
 	{
-		strncpy(t->th_buf.version, TVERSION, TVERSLEN);
-		strncpy(t->th_buf.magic, TMAGIC, TMAGLEN);
+		memcpy(t->th_buf.version, TVERSION, TVERSLEN);
+		memcpy(t->th_buf.magic, TMAGIC, TMAGLEN);
 	}
 
 	int_to_oct(th_crc_calc(t), t->th_buf.chksum, 8);
@@ -88,7 +88,7 @@ th_set_path(TAR *t, const char *pathname)
 	{
 		/* GNU-style long name */
 		t->th_buf.gnu_longname = strdup(pathname);
-		strncpy(t->th_buf.name, t->th_buf.gnu_longname, T_NAMELEN);
+		memcpy(t->th_buf.name, t->th_buf.gnu_longname, T_NAMELEN);
 	}
 	else if (strlen(pathname) > T_NAMELEN)
 	{
