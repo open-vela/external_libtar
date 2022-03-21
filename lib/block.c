@@ -316,7 +316,7 @@ th_write(TAR *t)
 			}
 		}
 		memset(buf, 0, T_BLOCKSIZE);
-		strncpy(buf, ptr, T_BLOCKSIZE);
+		memcpy(buf, ptr, strlen(ptr));
 		i = tar_block_write(t, &buf);
 		if (i != T_BLOCKSIZE)
 		{
@@ -367,7 +367,7 @@ th_write(TAR *t)
 			}
 		}
 		memset(buf, 0, T_BLOCKSIZE);
-		strncpy(buf, ptr, T_BLOCKSIZE);
+		memcpy(buf, ptr, strlen(ptr));
 		i = tar_block_write(t, &buf);
 		if (i != T_BLOCKSIZE)
 		{
