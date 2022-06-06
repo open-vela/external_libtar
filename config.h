@@ -8,7 +8,7 @@
 #define HAVE_CTYPE_H 1
 
 /* Define to 1 if the system has the type `dev_t'. */
-/* #undef HAVE_DEV_T */
+#define HAVE_DEV_T 1
 
 /* Define if your system has a working dirname */
 #define HAVE_DIRNAME 1
@@ -26,13 +26,13 @@
 #define HAVE_INTTYPES_H 1
 
 /* Define to 1 if you have the `lchown' function. */
-/* #undef HAVE_LCHOWN */
+#define HAVE_LCHOWN 1
 
 /* Define to 1 if you have the <libgen.h> header file. */
 #define HAVE_LIBGEN_H 1
 
 /* Define to 1 if you have the `z' library (-lz). */
-//#define HAVE_LIBZ 1
+/* #undef HAVE_LIBZ */
 
 /* Define to 1 if the system has the type `major_t'. */
 /* #undef HAVE_MAJOR_T */
