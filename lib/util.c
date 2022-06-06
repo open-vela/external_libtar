@@ -23,7 +23,7 @@
 
 /* hashing function for pathnames */
 int
-path_hashfunc(char *key, int numbuckets)
+path_hashfunc(const char *key, int numbuckets)
 {
 	char buf[MAXPATHLEN];
 	char *p;
@@ -75,7 +75,7 @@ ino_hash(ino_t *inode)
 **	-1 (and sets errno)	error
 */
 int
-mkdirhier(char *path)
+mkdirhier(const char *path)
 {
 	char src[MAXPATHLEN], dst[MAXPATHLEN] = "";
 	char *dirp, *nextp = src;
@@ -144,7 +144,7 @@ th_signed_crc_calc(TAR *t)
 
 /* string-octal to integer conversion */
 int
-oct_to_int(char *oct)
+oct_to_int(const char *oct)
 {
 	int i;
 
