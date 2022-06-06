@@ -58,7 +58,7 @@ segv_handler(int sig)
 int use_zlib = 0;
 
 int
-gzopen_frontend(char *pathname, int oflags, int mode)
+gzopen_frontend(const char *pathname, int oflags, int mode)
 {
 	char *gzoflags;
 	gzFile gzf;
@@ -110,7 +110,7 @@ tartype_t gztype = { (openfunc_t) gzopen_frontend, (closefunc_t) gzclose,
 
 
 int
-create(char *tarfile, char *rootdir, libtar_list_t *l)
+create(const char *tarfile, char *rootdir, libtar_list_t *l)
 {
 	TAR *t;
 	char *pathname;
@@ -167,7 +167,7 @@ create(char *tarfile, char *rootdir, libtar_list_t *l)
 
 
 int
-list(char *tarfile)
+list(const char *tarfile)
 {
 	TAR *t;
 	int i;
@@ -226,7 +226,7 @@ list(char *tarfile)
 
 
 int
-extract(char *tarfile, char *rootdir)
+extract(const char *tarfile, char *rootdir)
 {
 	TAR *t;
 
