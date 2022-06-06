@@ -80,7 +80,7 @@ tartype_t;
 typedef struct
 {
 	tartype_t *type;
-	char *pathname;
+	const char *pathname;
 	long fd;
 	int oflags;
 	int options;
@@ -254,7 +254,7 @@ void th_print_long_ls(TAR *t);
 /***** util.c *************************************************************/
 
 /* hashing function for pathnames */
-int path_hashfunc(char *key, int numbuckets);
+int path_hashfunc(const char *key, int numbuckets);
 
 /* matching function for dev_t's */
 int dev_match(dev_t *dev1, dev_t *dev2);
@@ -269,7 +269,7 @@ int dev_hash(dev_t *dev);
 int ino_hash(ino_t *inode);
 
 /* create any necessary dirs */
-int mkdirhier(char *path);
+int mkdirhier(const char *path);
 
 /* calculate header checksum */
 int th_crc_calc(TAR *t);
@@ -281,7 +281,7 @@ int th_signed_crc_calc(TAR *t);
 #define th_crc_ok(t) (th_get_crc(t) == th_crc_calc(t) || th_get_crc(t) == th_signed_crc_calc(t))
 
 /* string-octal to integer conversion */
-int oct_to_int(char *oct);
+int oct_to_int(const char *oct);
 
 /* integer to NULL-terminated string-octal conversion */
 #define int_to_oct(num, oct, octlen) \
