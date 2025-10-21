@@ -47,7 +47,7 @@ static ssize_t tar_writefunc(intptr_t fd, const void *buf, size_t count)
 	return write((int)fd, buf, count);
 }
 
-static tartype_t default_type = { tar_openfunc, tar_closefunc,
+static tartype_t default_type = { (openfunc_t)tar_openfunc, tar_closefunc,
 				  tar_readfunc, tar_writefunc };
 
 
